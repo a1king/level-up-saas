@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import Navigation from './components/common/Navigation';
+import Dashboard from './components/dashboard/Dashboard';
+import ApplicationTracker from './components/tracker/ApplicationTracker';
+import Insights from './components/insights/Insights';
+import AIInsights from './components/ai/AIInsights';
+import PricingPage from './components/pricing/PricingPage';
+import LandingHero from './components/landing/LandingHero';
+import { mockData } from './utils/mockData';
+import './App.css';
+
+function App() {
+  const [currentView, setCurrentView] = useState('landing');
+  const [applications, setApplications] = useState(mockData.applications);
+  const [user, setUser] = useState(mockData.user);
+
+  // Landing page view
+  if (currentView === 'landing') {
+    return <LandingHero setCurrentView={setCurrentView} />;
+  }
+
+  // Main app with navigation
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <Navigation currentView={currentView} setCurrentView={setCurrentView} user={user} />
+      
+      {currentView === 'dashboard' && (
+        <Dashboard 
+          applications={applications} 
+          insights={mockData.insights} 
+          user={user} 
+          setCurrentView={setCurrentView}
+        />
+      )}
+      
+      {currentView === 'tracker' && (
+        <ApplicationTracker 
+          applications={applications} 
+          setApplications={setApplications} 
+          user={user} 
+        />
+      )}
+      
+      {currentView === 'insights' && (
+        <Insights insights={mockData.insights} user={user} />
+      )}
+      
+      {currentView === 'ai-assistant' && (
+        <AIInsights user={user} />
+      )}
+      
+      {currentView === 'pricing' && (
+        <PricingPage user={user} />
+      )}
+    </div>
+  );
+}
+
+export default App;
