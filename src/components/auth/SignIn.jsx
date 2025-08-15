@@ -16,8 +16,8 @@ export default function SignIn({ onSwitchToSignUp }) {
     try {
       await signIn(formData.email, formData.password)
       // Success - auth hook will handle redirect
-    } catch (err) {
-      // Error is handled by useAuth hook
+    } catch {
+      // Error is handled by useAuth hook - removed unused 'err'
     } finally {
       setLoading(false)
     }

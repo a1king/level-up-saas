@@ -16,7 +16,7 @@ export function DraggableCardBody({ children, className = "" }) {
 
   const handleMouseDown = useCallback((e) => {
     setIsDragging(true);
-    const rect = cardRef.current.getBoundingClientRect();
+    
     setDragStart({
       x: e.clientX - position.x,
       y: e.clientY - position.y

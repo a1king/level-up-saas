@@ -12,7 +12,7 @@ export class DataService {
       
       if (error) throw error
       return data || []
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       return mockData.applications || []
@@ -28,7 +28,7 @@ export class DataService {
       
       if (error) throw error
       return data[0]
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       const newApp = {
@@ -50,7 +50,7 @@ export class DataService {
       
       if (error) throw error
       return data[0]
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       return { id, ...updates }
@@ -65,7 +65,7 @@ export class DataService {
         .eq('id', id)
       
       if (error) throw error
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       // Mock delete - just log it
@@ -86,7 +86,7 @@ export class DataService {
       
       if (error) throw error
       return data
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       return mockData.user || {}
@@ -106,7 +106,7 @@ export class DataService {
       
       if (error) throw error
       return data[0]
-    } catch (error) {
+    } catch {
       // Fallback to mock data if Supabase is not configured
       console.log('Using mock data (Supabase not configured)')
       return { ...mockData.user, ...updates }

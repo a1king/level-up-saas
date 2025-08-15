@@ -28,7 +28,7 @@ export function FloatingText() {
     ];
 
     // Create text geometries (simplified as cubes for now)
-    words.forEach((word, index) => {
+    words.forEach((word) => {
       const geometry = new THREE.BoxGeometry(word.size, word.size, word.size);
       const material = new THREE.MeshBasicMaterial({ 
         color: word.color,
@@ -86,17 +86,17 @@ export function FloatingText() {
       animationIdRef.current = requestAnimationFrame(animate);
       
       // Animate text objects
-      textObjects.forEach((obj, index) => {
+      textObjects.forEach((obj) => {
         obj.rotation.x += obj.userData.rotationSpeed.x;
         obj.rotation.y += obj.userData.rotationSpeed.y;
         obj.rotation.z += obj.userData.rotationSpeed.z;
         
-        obj.position.y = obj.userData.originalY + Math.sin(Date.now() * obj.userData.floatSpeed + index) * obj.userData.floatRange;
+        obj.position.y = obj.userData.originalY + Math.sin(Date.now() * obj.userData.floatSpeed ) * obj.userData.floatRange;
       });
       
       // Animate particles
-      particles.forEach((particle, index) => {
-        particle.position.y += Math.sin(Date.now() * particle.userData.floatSpeed + index) * 0.01;
+      particles.forEach((particle) => {
+        particle.position.y += Math.sin(Date.now() * particle.userData.floatSpeed ) * 0.01;
         particle.rotation.y += 0.01;
       });
       

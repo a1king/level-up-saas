@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 export function TiltedCards({ setCurrentView }) {
-  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -24,22 +23,16 @@ export function TiltedCards({ setCurrentView }) {
   const handleMouseLeave = () => {
     if (!cardRef.current) return;
     cardRef.current.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-    setIsHovered(false);
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 py-12">
-      {/* Feature Card 1 */}
+      {/* Feature Card 1 - Track Applications */}
       <div
         ref={cardRef}
         className="relative group cursor-pointer transition-all duration-300 ease-out"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={handleMouseEnter}
         onClick={() => setCurrentView && setCurrentView('tracker')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
@@ -54,9 +47,11 @@ export function TiltedCards({ setCurrentView }) {
         </div>
       </div>
 
-      {/* Feature Card 2 */}
+      {/* Feature Card 2 - Analytics & Insights */}
       <div 
         className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         onClick={() => setCurrentView && setCurrentView('insights')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
@@ -71,9 +66,11 @@ export function TiltedCards({ setCurrentView }) {
         </div>
       </div>
 
-      {/* Feature Card 3 */}
+      {/* Feature Card 3 - AI Assistant */}
       <div 
         className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         onClick={() => setCurrentView && setCurrentView('ai-assistant')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
@@ -88,9 +85,11 @@ export function TiltedCards({ setCurrentView }) {
         </div>
       </div>
 
-      {/* Feature Card 4 */}
+      {/* Feature Card 4 - Resume Builder */}
       <div 
         className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         onClick={() => setCurrentView && setCurrentView('dashboard')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
@@ -105,10 +104,12 @@ export function TiltedCards({ setCurrentView }) {
         </div>
       </div>
 
-      {/* Feature Card 5 */}
+      {/* Feature Card 5 - Interview Prep */}
       <div 
         className="relative group cursor-pointer transition-all duration-300 ease-out"
-        onClick={() => setCurrentView && setCurrentView('dashboard')}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setCurrentView && setCurrentView('ai-assistant')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
@@ -122,9 +123,11 @@ export function TiltedCards({ setCurrentView }) {
         </div>
       </div>
 
-      {/* Feature Card 6 */}
+      {/* Feature Card 6 - Salary Insights */}
       <div 
         className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         onClick={() => setCurrentView && setCurrentView('pricing')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
