@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 
 export function DraggableCardContainer({ children, className = "" }) {
   return (
@@ -11,53 +11,72 @@ export function DraggableCardContainer({ children, className = "" }) {
 export function DraggableCardBody({ children, className = "" }) {
   const cardRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [transform, setTransform] = useState({ x: 0, y: 0 });
 
-  const handleMouseDown = (e) => {
+  const handleStart = useCallback((clientX, clientY) => {
     setIsDragging(true);
-    setDragStart({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y
+    const rect = cardRef.current.getBoundingClientRect();
+    setDragOffset({
+      x: clientX - rect.left - transform.x,
+      y: clientY - rect.top - transform.y
     });
-  };
+  }, [transform]);
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
+  const handleMove = useCallback((clientX, clientY) => {
+    if (!isDragging) return;
+    
+    requestAnimationFrame(() => {
+      setTransform({
+        x: clientX - dragOffset.x,
+        y: clientY - dragOffset.y
       });
-    }
-  };
+    });
+  }, [isDragging, dragOffset]);
 
-  const handleMouseUp = () => {
+  const handleEnd = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
   React.useEffect(() => {
+    const handleMouseMove = (e) => handleMove(e.clientX, e.clientY);
+    const handleTouchMove = (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY);
+    };
+
     if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mousemove', handleMouseMove, { passive: false });
+      document.addEventListener('mouseup', handleEnd);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleEnd);
     }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleEnd);
     };
-  }, [isDragging, dragStart]);
+  }, [isDragging, handleMove, handleEnd]);
 
   return (
     <div
       ref={cardRef}
-      className={`cursor-grab active:cursor-grabbing transition-transform hover:scale-105 ${className}`}
+      className={`cursor-grab active:cursor-grabbing select-none ${className}`}
       style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        zIndex: isDragging ? 50 : 10
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        zIndex: isDragging ? 1000 : 10,
+        willChange: isDragging ? 'transform' : 'auto'
       }}
-      onMouseDown={handleMouseDown}
+      onMouseDown={(e) => handleStart(e.clientX, e.clientY)}
+      onTouchStart={(e) => {
+        const touch = e.touches[0];
+        handleStart(touch.clientX, touch.clientY);
+      }}
     >
-      <div className="bg-white rounded-xl shadow-lg p-4 border-2 border-white hover:border-cyan-200 transition-colors">
+      <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20 hover:shadow-xl transition-all duration-300 hover:scale-105">
         {children}
       </div>
     </div>
