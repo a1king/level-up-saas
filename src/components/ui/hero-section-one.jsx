@@ -17,7 +17,7 @@ export function HeroSectionOne() {
       </div>
       <div className="px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Launch your website in hours, not days"
+          {"Stop Playing the Job Application Guessing Game"
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -66,10 +66,10 @@ export function HeroSectionOne() {
           className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
         >
           <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-            Explore Now
+            Start Tracking Free
           </button>
           <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
-            Contact Support
+            View Features
           </button>
         </motion.div>
         <motion.div
@@ -107,7 +107,7 @@ const Navbar = () => {
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
         <div className="size-7 rounded-full bg-gradient-to-br from-violet-500 to-pink-500" />
-        <h1 className="text-base font-bold md:text-2xl">Aceternity UI</h1>
+        <h1 className="text-base font-bold md:text-2xl">Level Up</h1>
       </div>
       <button className="w-24 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-32 dark:bg-white dark:text-black dark:hover:bg-gray-200">
         Login
