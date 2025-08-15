@@ -77,7 +77,7 @@ export default function LandingHero({ setCurrentView }) {
 
       {/* Hero Section One */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <HeroSectionOne />
+        <HeroSectionOne setCurrentView={setCurrentView} />
       </div>
 
       {/* Interactive Tilted Cards */}
