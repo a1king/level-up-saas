@@ -9,9 +9,9 @@ export default function LandingHero({ setCurrentView }) {
             <span className="text-2xl font-bold text-cyan-600">Level Up</span>
             <button 
               onClick={() => setCurrentView('dashboard')}
-              className="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700"
+              className="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 font-medium"
             >
-              Sign In
+              Get Started
             </button>
           </div>
         </div>
