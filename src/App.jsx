@@ -18,7 +18,7 @@ export default function App() {
     return <LandingHero setCurrentView={setCurrentView} />;
   }
 
-  // Show main app
+  // Show main app with embedded Navigation
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation currentView={currentView} setCurrentView={setCurrentView} user={user} />
@@ -31,7 +31,7 @@ export default function App() {
   );
 }
 
-// Simple Navigation Component
+// Embedded Navigation Component (no separate import needed)
 function Navigation({ currentView, setCurrentView, user }) {
   return (
     <nav className="bg-white shadow-sm border-b">
