@@ -1,16 +1,11 @@
 import React from 'react';
-import { AuroraBackground } from '../ui/aurora-background';
 import { DraggableCardBody, DraggableCardContainer } from '../ui/draggable-card';
+import { TiltedCards } from '../ui/tilted-cards';
+import { HeroSectionOne } from '../ui/hero-section-one';
 
 export default function LandingHero({ setCurrentView }) {
   const successStories = [
-    {
-      name: "Sarah Chen",
-      university: "Stanford CS", 
-      achievement: "Google SWE Intern",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b002?q=80&w=400&auto=format&fit=crop",
-      className: "absolute top-10 left-[20%] rotate-[-5deg]"
-    },
+
     {
       name: "Alex Rivera",
       university: "MIT EECS",
@@ -42,7 +37,7 @@ export default function LandingHero({ setCurrentView }) {
   ];
 
   return (
-    <AuroraBackground>
+    <div className="relative min-h-screen">
       {/* Navigation */}
       <nav className="bg-white/80 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,25 +75,18 @@ export default function LandingHero({ setCurrentView }) {
         </button>
       </div>
 
-      {/* Features */}
+      {/* Hero Section One */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-4">📊</div>
-            <h3 className="text-xl font-bold mb-4">Smart Analytics</h3>
-            <p className="text-slate-600">Track response rates and application timelines with data from thousands of students.</p>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-4">🤖</div>
-            <h3 className="text-xl font-bold mb-4">AI Assistant</h3>
-            <p className="text-slate-600">Get personalized resume analysis, cover letter generation, and interview prep.</p>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold mb-4">Success Tracking</h3>
-            <p className="text-slate-600">Monitor your journey from application to offer with intelligent insights.</p>
-          </div>
-        </div>
+        <HeroSectionOne />
+      </div>
+
+      {/* Interactive Tilted Cards */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <h2 className="text-4xl font-bold text-center mb-8">Interactive Features</h2>
+        <p className="text-xl text-slate-600 text-center mb-16 max-w-3xl mx-auto">
+          Explore our powerful tools - click on any card to see demos in action!
+        </p>
+        <TiltedCards setCurrentView={setCurrentView} />
       </div>
 
       {/* Success Stories with Tilted Draggable Cards */}
@@ -111,7 +99,8 @@ export default function LandingHero({ setCurrentView }) {
         <DraggableCardContainer className="relative flex min-h-[500px] w-full items-center justify-center">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-0">
             <p className="text-2xl font-bold text-slate-400 max-w-md">
-              Drag the success story cards around!
+              🚀 Your success story starts here! <br/>
+              <span className="text-lg text-slate-500">Drag these cards to see what's possible</span>
             </p>
           </div>
           
@@ -143,6 +132,6 @@ export default function LandingHero({ setCurrentView }) {
           </button>
         </div>
       </div>
-    </AuroraBackground>
+    </div>
   );
 }

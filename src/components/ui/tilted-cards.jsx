@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-export function TiltedCards() {
+export function TiltedCards({ setCurrentView }) {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
 
@@ -40,6 +40,7 @@ export function TiltedCards() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
+        onClick={() => setCurrentView && setCurrentView('tracker')}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
@@ -54,7 +55,10 @@ export function TiltedCards() {
       </div>
 
       {/* Feature Card 2 */}
-      <div className="relative group cursor-pointer transition-all duration-300 ease-out">
+      <div 
+        className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onClick={() => setCurrentView && setCurrentView('insights')}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
           <div className="text-4xl mb-4">📊</div>
@@ -68,7 +72,10 @@ export function TiltedCards() {
       </div>
 
       {/* Feature Card 3 */}
-      <div className="relative group cursor-pointer transition-all duration-300 ease-out">
+      <div 
+        className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onClick={() => setCurrentView && setCurrentView('ai-assistant')}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
           <div className="text-4xl mb-4">🤖</div>
@@ -82,7 +89,10 @@ export function TiltedCards() {
       </div>
 
       {/* Feature Card 4 */}
-      <div className="relative group cursor-pointer transition-all duration-300 ease-out">
+      <div 
+        className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onClick={() => setCurrentView && setCurrentView('dashboard')}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
           <div className="text-4xl mb-4">📝</div>
@@ -96,7 +106,10 @@ export function TiltedCards() {
       </div>
 
       {/* Feature Card 5 */}
-      <div className="relative group cursor-pointer transition-all duration-300 ease-out">
+      <div 
+        className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onClick={() => setCurrentView && setCurrentView('dashboard')}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
           <div className="text-4xl mb-4">🎯</div>
@@ -110,7 +123,10 @@ export function TiltedCards() {
       </div>
 
       {/* Feature Card 6 */}
-      <div className="relative group cursor-pointer transition-all duration-300 ease-out">
+      <div 
+        className="relative group cursor-pointer transition-all duration-300 ease-out"
+        onClick={() => setCurrentView && setCurrentView('pricing')}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
           <div className="text-4xl mb-4">💰</div>

@@ -1,17 +1,17 @@
 export const mockData = {
   user: {
-    name: "Alex Chen",
+    name: "Sarah Joyce",
     university: "Stanford University", 
     major: "Computer Science",
     graduationYear: "2025",
     subscriptionTier: "premium" // free, premium
   },
   applications: [
-    { id: 1, company: "Google", position: "Software Engineer Intern", dateApplied: "2024-01-15", status: "Interview Scheduled", responseTime: 7, verified: true },
-    { id: 2, company: "Microsoft", position: "SWE Intern", dateApplied: "2024-01-10", status: "Pending", responseTime: null, verified: false },
-    { id: 3, company: "Meta", position: "Frontend Engineer Intern", dateApplied: "2024-01-08", status: "Rejected", responseTime: 14, verified: true },
-    { id: 4, company: "Apple", position: "iOS Developer Intern", dateApplied: "2024-01-05", status: "Offer Received", responseTime: 21, verified: true },
-    { id: 5, company: "Netflix", position: "Data Science Intern", dateApplied: "2024-01-03", status: "Pending", responseTime: null, verified: false }
+    { id: 1, company: "Google", position: "Software Engineer Intern", date_applied: "2024-01-15", status: "Interview Scheduled", responseTime: 7, verified: true },
+    { id: 2, company: "Microsoft", position: "SWE Intern", date_applied: "2024-01-10", status: "Pending", responseTime: null, verified: false },
+    { id: 3, company: "Meta", position: "Frontend Engineer Intern", date_applied: "2024-01-08", status: "Rejected", responseTime: 14, verified: true },
+    { id: 4, company: "Apple", position: "iOS Developer Intern", date_applied: "2024-01-05", status: "Offer Received", responseTime: 21, verified: true },
+    { id: 5, company: "Netflix", position: "Data Science Intern", date_applied: "2024-01-03", status: "Pending", responseTime: null, verified: false }
   ],
   insights: {
     avgResponseTime: 14,
